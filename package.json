@@ -1,0 +1,17 @@
+{
+  "name": "js-dom-intro",
+  "version": "1.0.0",
+  "description": "This was our first time looking at the DOM",
+  "main": "index.js",
+  "scripts": {
+    "build": "eleventy",
+    "start": "eleventy --serve"
+  },
+  "keywords": [],
+  "author": "Craig Richards",
+  "license": "ISC",
+  "devDependencies": {
+    "@11ty/eleventy": "^0.12.1",
+    "@11ty/eleventy-navigation": "^0.1.6"
+  }
+}
