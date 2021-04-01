@@ -1,0 +1,80 @@
+---
+subtitle: A square with an EventListener
+layout: base.njk
+jsfile: on-load.js
+eleventyNavigation:
+  key: on-load
+  order: 7
+---
+    
+<div class="col-10 text-start">
+  <h2>{{ subtitle }}</h2>
+  <p>This page repeats the preceding 3 examples but instead of calling the 
+    functions which add Event Listeners directly, those calls are moved to
+    the <strong>Window: load event</strong> which is fired once the whole 
+    page (including all dependent resources such as stylesheets and images)
+    has finished loading.
+  </p>
+  <div id="task3wrapper">
+    <h2 id="task3-header">Don't be such a square!</h2>
+    <div id="task3-square" style="height: 50px; width: 50px; background: red;">
+    </div>
+  </div>
+
+  <div id="task4wrapper" class="pt-3">
+    <h2 id="task4-header">You're going nowhere!</h2>
+    <a id="task4-link" href="https://LeedsWebDev.org">Leeds Web Dev</a>
+  </div>
+
+  <div id="task5wrapper" class="pt-3">
+    <h2>Simple VAT Calculation</h2>
+    <form action="/nada">
+      <fieldset>
+        <div>
+          <label for="task5-input">Enter the Net Amount: </label>
+          <input id="task5-input" name="my-number" placeholder="Net Amount" />
+          <button id="task5-submit" class="btn btn-secondary text-warning" type="submit">Calculate</button>
+        </div>
+        <p id="task5-output" class="pt-2 text-danger">The calculated Gross Amount will go here</p>
+    </form>
+  </div>
+
+  <h2 class="pt-3">Javascript</h2>
+  <div class="bg-white">
+    <pre><code>function square() {
+  var theSquare = document.getElementById('task3-square');
+  var myFunction = function () {
+      alert('Hey, look at my red square!');
+  };
+  theSquare.addEventListener('mouseover', myFunction);
+}
+
+function dontGoThere() {
+  var theLink = document.getElementById('task4-link');
+  var myInterceptFunction = function (event) {
+      event.preventDefault();
+      alert("Won't you stay? (Just a little bit longer...)");
+  };
+  theLink.addEventListener('click', myInterceptFunction);
+}
+
+function noSubmitForm() {
+  var theInput = document.getElementById('task5-input');
+  var theButton = document.getElementById('task5-submit');
+  var theOutput = document.getElementById('task5-output');
+  const VAT_MULTIPLIER = 1.2;
+  var mySubmitFunction = function(funky) {
+    funky.preventDefault();
+    theOutput.innerHTML = 
+      `${theInput.value} + 20% VAT is ${(theInput.value * VAT_MULTIPLIER).toFixed(2)}`
+  };
+  theButton.addEventListener('click', mySubmitFunction);
+}
+
+window.addEventListener('load', function() {
+  noSubmitForm();
+  dontGoThere();
+  square();
+});</code></pre>
+  </div>
+</div>

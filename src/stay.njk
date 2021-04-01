@@ -1,0 +1,31 @@
+---
+subtitle: EventListener to change default behaviour
+layout: base.njk
+jsfile: stay.js
+eleventyNavigation:
+  key: stay
+  order: 5
+---
+    
+<div class="col-10 text-start">
+  <h2>{{ subtitle }}</h2>
+  <p>An <code>EventListener</code> has been added to the link below, which
+    changes the default behaviour and prevents the link from being displayed.
+  </p>
+  <div id="task4wrapper">
+    <h2 id="task4-header">You're going nowhere!</h2>
+    <a id="task4-link" href="https://LeedsWebDev.org">Leeds Web Dev</a>
+  </div>
+  <h2 class="pt-3">Javascript</h2>
+  <div class="bg-white">
+    <pre><code>function dontGoThere() {
+  var theLink = document.getElementById('task4-link');
+  var myInterceptFunction = function (event) {
+      event.preventDefault();
+      alert("Won't you stay? (Just a little bit longer...)");
+  };
+  theLink.addEventListener('click', myInterceptFunction);
+}
+dontGoThere();</code></pre>
+  </div>
+</div>

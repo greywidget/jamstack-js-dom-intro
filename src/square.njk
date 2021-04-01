@@ -1,0 +1,52 @@
+---
+subtitle: A square with an EventListener
+layout: base.njk
+jsfile: square.js
+eleventyNavigation:
+  key: square
+  order: 4
+---
+    
+<div class="col-10 text-start">
+  <h2>{{ subtitle }}</h2>
+  <p>This square has an <code>EventListener</code> which will run some
+    javascript when the mouse cursor moves over it.
+  </p>
+  <div id="task3wrapper">
+    <h2 id="task3-header">Don't be such a square!</h2>
+    <div id="task3-square" style="height: 50px; width: 50px; background: red;">
+    </div>
+  </div>
+  <h2 class="pt-3">Javascript</h2>
+  <div class="bg-white">
+    <pre><code>function square() {
+  var theSquare = document.getElementById('task3-square');
+  var myFunction = function () {
+      alert('Hey, look at my red square!');
+  };
+  theSquare.addEventListener('mouseover', myFunction);
+}
+
+square();</code></pre>
+  </div>
+
+  <p>Note that this javascript has a function which adds an <strong>EventListener</strong>
+    to the square <em>and also calls that function</em>. In order for this to
+    work correctly, the square element must already have been created in the
+    document. If the javascript import is at the top of the document, this won't
+    be the case and function would have an exception.</p>
+
+  <p>This scenario can be avoided in a couple of ways:</p>
+  <ul>
+    <li>Make sure that the javascript is imported at the end of the document so
+      it runs after the page is loaded.</li>
+    <li>Move the function calls like <code>square()</code> inside a window Event
+      Listener as below:</li>
+  </ul>
+  <div class="bg-white">
+    <pre><code>window.addEventListener('load', function() {
+  square();
+}</code></pre>
+  </div>
+  <p>There is a later example which demonstrates this technique.</p>
+</div>

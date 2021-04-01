@@ -1,0 +1,45 @@
+---
+subtitle: EventListener to change default behaviour
+layout: base.njk
+jsfile: input.js
+eleventyNavigation:
+  key: input
+  order: 6
+---
+    
+<div class="col-10 text-start">
+  <h2>{{ subtitle }}</h2>
+  <p>In the example below, a <code>form</code> is used to enter some data, but 
+    the form behaviour is overridden so that it is not submitted. Instead, 
+    javascript is used to perform some calculation and output the results.
+  </p>
+  <div id="task5wrapper">
+    <h2>Simple VAT Calculation</h2>
+    <form action="/nada">
+      <fieldset>
+        <div>
+          <label for="task5-input">Enter the Net Amount: </label>
+          <input id="task5-input" name="my-number" placeholder="Net Amount" />
+          <button id="task5-submit" class="btn btn-secondary text-warning" type="submit">Calculate</button>
+        </div>
+        <p id="task5-output" class="pt-2 text-danger">The calculated Gross Amount will go here</p>
+    </form>
+  </div>
+  <h2 class="pt-3">Javascript</h2>
+  <div class="bg-white">
+    <pre><code>function noSubmitForm() {
+  var theInput = document.getElementById('task5-input');
+  var theButton = document.getElementById('task5-submit');
+  var theOutput = document.getElementById('task5-output');
+  const VAT_MULTIPLIER = 1.2;
+  var mySubmitFunction = function(funky) {
+    funky.preventDefault();
+    theOutput.innerHTML = 
+      `${theInput.value} + 20% VAT is ${(theInput.value * VAT_MULTIPLIER).toFixed(2)}`
+  };
+  theButton.addEventListener('click', mySubmitFunction);
+}
+
+noSubmitForm();</code></pre>
+  </div>
+</div>

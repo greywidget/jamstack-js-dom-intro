@@ -1,0 +1,31 @@
+---
+subtitle: Change image source and heading colour
+layout: base.njk
+jsfile: kittens.js
+eleventyNavigation:
+  key: kittens
+  order: 2
+---
+    
+<div class="col-10 text-start">
+  <h2>{{ subtitle }}</h2>
+  <p>Here are two simple examples of using javascript to target specific
+    elements and change some of their attributes.
+  </p>
+  <div id="task1wrapper">
+    <h2 id="task1-header">Everyone Loves Kittens</h2>
+    <img src="http://placekitten.com/g/600/500" />
+    <div class="pt-3">
+      <button type="button" class="btn btn-secondary text-warning" onclick="kittens()">Run Javascript</button>
+    </div>
+  </div>
+  <h2 class="pt-3">Javascript</h2>
+  <div class="bg-white">
+    <pre><code>function kittens() {
+  var task1Image = document.getElementsByTagName('img')[1];
+  task1Image.src = "http://placekitten.com/g/200/200";
+  var task1Header = document.getElementById('task1-header');
+  task1Header.style.color = 'red';
+}</code></pre>
+  </div>
+</div>

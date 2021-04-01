@@ -1,0 +1,33 @@
+---
+subtitle: Create a new paragraph with content
+layout: base.njk
+jsfile: add-paragraph.js
+eleventyNavigation:
+  key: paragraph
+  order: 3
+---
+    
+<div class="col-10 text-start">
+  <h2>{{ subtitle }}</h2>
+  <p>Create a new paragraph element and add it to a div on the page.
+  </p>
+  <div id="task2wrapper">
+    <h2 id="task2-header">Nothing to see here</h2>
+    <div class="py-3">
+      <button type="button" class="btn btn-secondary text-warning" onclick="addParagraph()">Add new content</button>
+    </div>
+  </div>
+
+  <h2 class="pt-3">Javascript</h2>
+  <div class="bg-white">
+    <pre><code>function addParagraph() {
+    // Create a new paragraph element and add it to a div on your page
+  var newPara = document.createElement('p');
+  var newText = document.createTextNode("By Hokey, I wasn't expecting that!");
+  newPara.appendChild(newText);
+  newPara.className="text-danger";
+  var task2wrapper = document.getElementById('task2wrapper');
+  task2wrapper.appendChild(newPara);
+}</code></pre>
+  </div>
+</div>
