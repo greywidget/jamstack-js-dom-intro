@@ -2,4 +2,4 @@
 
 This was our first time looking at the **D**ocument **O**bject **M**odel (**DOM**)
 
-[click here to view this site on Netlify]()
+[click here to view this site on Netlify](https://serene-shirley-ba8e3b.netlify.app/)
