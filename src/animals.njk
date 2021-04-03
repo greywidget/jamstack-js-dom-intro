@@ -115,25 +115,28 @@ for (let i = 0; i &lt; buttons.length; i++) {
     
     for (let j = 0; j &lt; images.length; j++) {
       if (animal == "all") {
-        images[j].style.display = "inline-block";
+        // images[j].style.display = "inline-block";
+        images[j].classList.remove("d-none");
       }
       else {
         var imageAltText = images[j].getAttribute("alt");
         if (images[j].classList.contains(animal)) {
           if (typedValue !== "") {
             if (imageAltText != null && imageAltText.includes(typedValue)) {
-              images[j].style.display = "inline-block";
+              images[j].classList.remove("d-none");
             }
             else {
-              images[j].style.display = "none";
+              // images[j].style.display = "none";
+              images[j].classList.add("d-none");
             }
           }
           else {
-            images[j].style.display = "inline-block";
+            images[j].classList.remove("d-none");
           }
         }
         else {
-          images[j].style.display = "none";
+          // images[j].style.display = "none";
+          images[j].classList.add("d-none");
         }
       }
     }
