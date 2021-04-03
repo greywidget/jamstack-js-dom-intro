@@ -1,0 +1,117 @@
+---
+subtitle: Image filtering
+layout: base.njk
+jsfile: animals.js
+eleventyNavigation:
+  key: animals
+  order: 8
+---
+    
+<div class="col-10 text-start">
+  <h2>{{ subtitle }}</h2>
+  <p>The <em>search box</em> and <em>buttons</em> can be used to filter the 
+    images on the screen. There are various ways that the search text and the 
+    buttons could be implemented to work together. In this particular case, the 
+    filtering is only applied when clicking on one of the animal buttons. Try
+    keying <strong>lion1</strong> and then clicking on the <em>lion button</em>.
+  </p>
+  <div id="task6wrapper">
+    <div class="row">
+      <input class="ms-1 col-4" type="text" id="searchText" name="searchText" placeholder="Type to search">
+    </div>
+    <div class="row mt-3">
+      <button class="m-1 col-2 btn btn-secondary text-warning buttonFilter" animal="all">all</button>
+      <button class="m-1 col-2 btn btn-secondary text-warning buttonFilter" animal="sloth">sloth</button>
+      <button class="m-1 col-2 btn btn-secondary text-warning buttonFilter" animal="owl">owl</button>
+      <button class="m-1 col-2 btn btn-secondary text-warning buttonFilter" animal="snake">snake</button>
+      <button class="m-1 col-2 btn btn-secondary text-warning buttonFilter" animal="lion">lion</button>
+    </div>
+
+    <div class="row mt-3">
+      <img class="col-6 col-md-3 sloth imageFilter" alt="sloth1"
+        src="https://images.pexels.com/photos/4484954/pexels-photo-4484954.jpeg" />
+      <img class="col-6 col-md-3 sloth imageFilter" alt="sloth2"
+        src="https://images.pexels.com/photos/2283375/pexels-photo-2283375.jpeg" />
+      <img class="col-6 col-md-3 sloth imageFilter" alt="sloth3"
+        src="https://images.pexels.com/photos/235701/pexels-photo-235701.jpeg" />
+      <img class="col-6 col-md-3 sloth imageFilter" alt="sloth4"
+        src="https://images.pexels.com/photos/3822505/pexels-photo-3822505.jpeg" />
+    </div>
+
+    <div class="row mt-3">
+      <img class="col-6 col-md-3 owl imageFilter" alt="owl1"
+        src="https://images.pexels.com/photos/3738646/pexels-photo-3738646.jpeg" />
+      <img class="col-6 col-md-3 owl imageFilter" alt="owl2"
+        src="https://images.pexels.com/photos/3732453/pexels-photo-3732453.jpeg" />
+      <img class="col-6 col-md-3 owl imageFilter" alt="owl3"
+        src="https://images.pexels.com/photos/2474014/pexels-photo-2474014.jpeg" />
+      <img class="col-6 col-md-3 owl imageFilter" alt="owl4"
+        src="https://images.pexels.com/photos/1579699/pexels-photo-1579699.jpeg" />
+    </div>
+
+    <div class="row mt-3">
+      <img class="col-6 col-md-3 snake imageFilter" alt="snake1"
+        src="https://images.pexels.com/photos/80474/grass-snake-snake-serpentes-natrix-80474.jpeg" />
+      <img class="col-6 col-md-3 snake imageFilter" alt="snake2"
+        src="https://images.pexels.com/photos/45246/green-tree-python-python-tree-python-green-45246.jpeg" />
+      <img class="col-6 col-md-3 snake imageFilter" alt="snake3" src="https://images.pexels.com/photos/23817/pexels-photo.jpg" />
+      <img class="col-6 col-md-3 snake imageFilter" alt="snake4"
+        src="https://images.pexels.com/photos/36714/snake-rattlesnake-reptile-skin.jpg" />
+    </div>
+
+    <div class="row mt-3">
+      <img class="img-fluid col-6 col-md-3 lion imageFilter" alt="lion1"
+        src="https://images.pexels.com/photos/2090868/pexels-photo-2090868.jpeg" />
+      <img class="img-fluid col-6 col-md-3 lion imageFilter" alt="lion2"
+        src="https://images.pexels.com/photos/2674052/pexels-photo-2674052.jpeg" />
+      <img class="img-fluid col-6 col-md-3 lion imageFilter" alt="lion3"
+        src="https://images.pexels.com/photos/2741798/pexels-photo-2741798.jpeg" />
+      <img class="img-fluid col-6 col-md-3 lion imageFilter" alt="lion4"
+        src="https://images.pexels.com/photos/1300960/pexels-photo-1300960.jpeg" />
+    </div>
+
+  </div>
+  <h2 class="pt-3">Javascript</h2>
+  <div class="bg-white">
+    <pre><code>const buttons = document.querySelectorAll(".buttonFilter");
+const images = document.querySelectorAll(".imageFilter");
+const textSearch = document.getElementById("searchText");
+console.log(textSearch);
+
+for (let i = 0; i &lt; buttons.length; i++) {
+  buttons[i].addEventListener("click", function () {
+    var animal = this.getAttribute("animal");
+    var typedValue = textSearch.value;
+    
+    for (let j = 0; j &lt; images.length; j++) {
+      if (animal == "all") {
+        images[j].style.display = "inline-block";
+      }
+      else {
+        var imageAltText = images[j].getAttribute("alt");
+        console.log(imageAltText);
+        if (images[j].classList.contains(animal)) {
+          if (typedValue !== "") {
+            console.log(typedValue);
+            console.log(imageAltText);
+            if (imageAltText != null && imageAltText.includes(typedValue)) {
+              images[j].style.display = "inline-block";
+            }
+            else {
+              images[j].style.display = "none";
+            }
+          }
+          else {
+            images[j].style.display = "inline-block";
+          }
+        }
+        else {
+          images[j].style.display = "none";
+        }
+      }
+    }
+  });
+}
+</code></pre>
+  </div>
+</div>
