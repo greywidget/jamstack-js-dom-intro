@@ -16,10 +16,8 @@ eleventyNavigation:
   <div id="task5wrapper">
     <h2>Simple VAT Calculation</h2>
     <form action="/nada">
-      <fieldset>
-        <div>
-          <label for="task5-input">Enter the Net Amount: </label>
-          <input id="task5-input" name="my-number" placeholder="Net Amount" />
+        <div class="input-group">
+          <input id="task5-input" class="form-control" name="my-number" placeholder="Net Amount" />
           <button id="task5-submit" class="btn btn-secondary text-warning" type="submit">Calculate</button>
         </div>
         <p id="task5-output" class="pt-2 text-danger">The calculated Gross Amount will go here</p>
