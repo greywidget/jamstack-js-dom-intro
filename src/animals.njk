@@ -107,7 +107,6 @@ eleventyNavigation:
     <pre><code>const buttons = document.querySelectorAll(".buttonFilter");
 const images = document.querySelectorAll(".imageFilter");
 const textSearch = document.getElementById("searchText");
-console.log(textSearch);
 
 for (let i = 0; i &lt; buttons.length; i++) {
   buttons[i].addEventListener("click", function () {
@@ -120,11 +119,8 @@ for (let i = 0; i &lt; buttons.length; i++) {
       }
       else {
         var imageAltText = images[j].getAttribute("alt");
-        console.log(imageAltText);
         if (images[j].classList.contains(animal)) {
           if (typedValue !== "") {
-            console.log(typedValue);
-            console.log(imageAltText);
             if (imageAltText != null && imageAltText.includes(typedValue)) {
               images[j].style.display = "inline-block";
             }
