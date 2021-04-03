@@ -9,7 +9,6 @@ for (let i = 0; i < buttons.length; i++) {
         
         for (let j = 0; j < images.length; j++) {
             if (animal == "all") {
-                // images[j].style.display = "inline-block";
                 images[j].classList.remove("d-none");
             }
             else {
@@ -20,7 +19,6 @@ for (let i = 0; i < buttons.length; i++) {
                             images[j].classList.remove("d-none");
                         }
                         else {
-                            // images[j].style.display = "none";
                             images[j].classList.add("d-none");
                         }
                     }
@@ -29,7 +27,6 @@ for (let i = 0; i < buttons.length; i++) {
                     }
                 }
                 else {
-                    // images[j].style.display = "none";
                     images[j].classList.add("d-none");
                 }
             }
